@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sowl_notice.dao.BoardDao">
+
+	<select id="getListBoard" resultType="com.sowl_notice.model.BoardModel">
+    SELECT 
+    					@rownum:=@rownum+1 No,
+                        BOARD_NO,
+    					BOARD_TITLE,
+					    BOARD_CONTENT,
+					    DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+					    BOARD_WRITER
+    FROM 				SOWL_BOARD,
+   						(SELECT @rownum:=0) r
+    </select>
+
+
+    <insert id="insertBoard" parameterType="com.sowl_notice.model.BoardModel">
+    INSERT 
+    INTO
+    SOWL_BOARD
+                        (BOARD_WRITER , BOARD_TITLE , BOARD_CONTENT) 
+    VALUES
+                        (#{board_writer},#{board_title},#{board_content} )
+    </insert>
+
+    <select id="getBoard" parameterType="int" resultType="com.sowl_notice.model.BoardModel">
+    SELECT 
+                        BOARD_TITLE,
+                        BOARD_NO,
+                        BOARD_CONTENT,
+                        DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_DATE,
+                        BOARD_WRITER
+    FROM SOWL_BOARD
+    WHERE 
+    BOARD_NO=           #{board_no}
+    </select>
+
+
+</mapper>

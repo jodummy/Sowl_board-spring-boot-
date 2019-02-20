@@ -1,0 +1,33 @@
+/*************************
+SLIDE
+*************************/
+.jumbotron {
+  margin-bottom: 0;
+}
+.slide {
+  background: url(../img/1234.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  color: #fff;
+  text-align: center;
+  height: 900px;
+  text-transform: uppercase;
+}
+.btn-primary {
+  background: #0000FF;
+  border-width: 2px;
+  color: #FFF;
+  font-size: 30px;
+}
+
+.btn-primary,
+.btn-primary:hover {
+  border-color: #0000FF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  border-color: #00F;
+  color: #00F;
+}
