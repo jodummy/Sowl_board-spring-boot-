@@ -11,4 +11,7 @@ public interface BoardService {
 	int insertBoard(BoardModel boardModel);
 	
 	BoardModel getBoard(int board_no);
+	int delBoard(int board_no);
+	
+	int updateBoard(BoardModel boardModel);
 }

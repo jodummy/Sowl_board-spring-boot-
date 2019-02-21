@@ -8,4 +8,6 @@ public interface BoardDao {
 	List<BoardModel> getListBoard();
 	int insertBoard(BoardModel boardModel);
 	BoardModel getBoard(int board_no);
+	int delBoard(int board_no);
+	int updateBoard(BoardModel boardModel);
 }
