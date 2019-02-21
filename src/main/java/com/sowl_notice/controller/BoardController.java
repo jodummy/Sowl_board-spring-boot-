@@ -7,13 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.SystemPropertyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sowl_notice.model.BoardModel;
+import com.sowl_notice.model.PageMaker;
+import com.sowl_notice.model.SearchCriteria;
 import com.sowl_notice.service.BoardService;
 
 @Controller
@@ -28,12 +32,20 @@ public class BoardController {
 	   }
 
 	   @RequestMapping(value = "/boardList", method = RequestMethod.GET)
-	   public String list(Model model) {
-	      List<BoardModel> list = boardService.getListBoard();
-	      model.addAttribute("list", list);
-
-	      return "boardList"; // JSP 파일명
-	   }
+	   public String boardList(@ModelAttribute("criteria") SearchCriteria criteria, Model model ,BoardModel boardModel) throws Exception {
+		   PageMaker pageMaker = new PageMaker();
+	       pageMaker.setCriteria(criteria);
+	       pageMaker.setTotalCount(boardService.selectBoardListCnt(criteria));
+	       model.addAttribute("list", boardService.listSearchPaging(criteria));
+	       model.addAttribute("totalCount", boardService.selectBoardListCnt(criteria));
+	       model.addAttribute("pageMaker", pageMaker);
+	       model.addAttribute("listNo" ,boardService.selectNoBoard());
+		
+	     
+	       return "boardList";
+	    }
+	   
+	   
 
 	   @RequestMapping(value = "/boardInsert", method = RequestMethod.GET) // URL 주소
 	   public String boardInsert() {

@@ -14,8 +14,8 @@
 			</div>
 			<div class="collapse navbar-collapse navbar-left" id="navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a data-scroll href="#">진행중 프로젝트</a></li>
-					<li><a data-scroll href="#">완료된 프로젝트</a></li>
+					<li><a href="/../boardList">home</a></li>
+					<li><a href="/../boardList">공지사항</a></li>
 					
 				</ul>
 			</div>

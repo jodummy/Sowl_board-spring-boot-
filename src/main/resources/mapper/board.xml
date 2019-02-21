@@ -3,16 +3,23 @@
 
 <mapper namespace="com.sowl_notice.dao.BoardDao">
 
-	<select id="getListBoard" resultType="com.sowl_notice.model.BoardModel">
-    SELECT 
-    					@rownum:=@rownum+1 No,
-                        BOARD_NO,
-    					BOARD_TITLE,
-					    BOARD_CONTENT,
-					    DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
-					    BOARD_WRITER
-    FROM 				SOWL_BOARD,
-   						(SELECT @rownum:=0) r
+	<select id="listSearchPaging" resultType="com.sowl_notice.model.BoardModel">
+     <![CDATA[
+        SELECT
+                            BOARD_NO,
+                            BOARD_TITLE,
+                            BOARD_CONTENT,
+                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            BOARD_WRITER
+        FROM 
+                            SOWL_BOARD
+        WHERE               BOARD_NO > 0
+        ]]>
+        <include refid="search"/>
+        <![CDATA[
+        ORDER BY BOARD_NO DESC, BOARD_INSERTDATE DESC
+        LIMIT #{pageStart}, #{perPageNum}
+        ]]>
     </select>
 
 
@@ -20,9 +27,9 @@
     INSERT 
     INTO
     SOWL_BOARD
-                        (BOARD_WRITER , BOARD_TITLE , BOARD_CONTENT) 
+                        (BOARD_WRITER , BOARD_TITLE , BOARD_CONTENT ) 
     VALUES
-                        (#{board_writer},#{board_title},#{board_content} )
+                        (#{board_writer},#{board_title},#{board_content}  )
     </insert>
 
     <select id="getBoard" parameterType="int" resultType="com.sowl_notice.model.BoardModel">
@@ -54,6 +61,65 @@
     WHERE 
     					BOARD_NO=           #{board_no}
     </update>
+
+    <select id= "selectBoardListCnt" resultType="int">
+     <![CDATA[
+        SELECT 
+                        COUNT(BOARD_NO)
+        FROM 
+                        SOWL_BOARD
+        WHERE BOARD_NO > 0
+        ]]>
+        <include refid="search"/>
+    </select>
+
+
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 't'.toString()">
+                AND BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType == 'c'.toString()">
+                AND BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType == 'w'.toString()">
+                AND BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType == 'tc'.toString()">
+                AND (
+                BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+            <if test="searchType == 'cw'.toString()">
+                AND (
+                BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+            <if test="searchType == 'tcw'.toString()">
+                AND (
+                BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+        </if>
+    </sql>
+    <select id="selectNoBoard" resultType="com.sowl_notice.model.BoardModel" >
+    	SELECT 
+                    @rownum:=@rownum+1 No
+        FROM 
+                    SOWL_BOARD,
+        (SELECT @rownum:=0)
+                    r
+    </select>
+
+
+
+
+
+
 
 
 </mapper>

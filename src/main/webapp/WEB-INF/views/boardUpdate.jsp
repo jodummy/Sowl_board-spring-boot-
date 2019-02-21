@@ -5,7 +5,11 @@
 
 <title>detail board</title>
 
-
+<script>
+function cancelBoard(board_no){
+	   location.href = "/boardDetail?board_no="+board_no;
+}
+</script>
 
 
 <body>
@@ -35,7 +39,7 @@
                <tr>
                   <td colspan="4">
                   <input class="btn btn-outline-secondary" type="submit" id="updateBtn" value="등록" > 
-                  <input class="btn btn-outline-secondary" type="button" id="deleteBtn" value="취소" onclick=""></td>
+                  <input class="btn btn-outline-secondary" type="button" id="cancelBtn" value="취소" onclick="cancelBoard(${dto.board_no})"></td>
                </tr>
             </thead>
          </table>

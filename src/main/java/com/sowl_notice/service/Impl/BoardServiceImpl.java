@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.sowl_notice.dao.BoardDao;
 import com.sowl_notice.model.BoardModel;
+import com.sowl_notice.model.Criteria;
+import com.sowl_notice.model.SearchCriteria;
 import com.sowl_notice.service.BoardService;
 
 @Service
@@ -14,12 +16,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDao dao;
-
-	@Override
-	public List<BoardModel> getListBoard() {
-		List<BoardModel> list = dao.getListBoard();
-		return list;
-	}
 
 	@Override
 	public int insertBoard(BoardModel boardModel) {
@@ -39,6 +35,21 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int updateBoard(BoardModel boardModel) {
 		return dao.updateBoard(boardModel);
+	}
+
+	@Override
+	public int selectBoardListCnt(SearchCriteria criteria) throws Exception {
+		return dao.selectBoardListCnt(criteria);
+	}
+
+	@Override
+	public List<BoardModel> listSearchPaging(SearchCriteria criteria) throws Exception {
+		return dao.listSearchPaging(criteria);
+	}
+
+	@Override
+	public List<BoardModel> selectNoBoard() {
+		return dao.selectNoBoard();
 	}
 
 }

@@ -34,9 +34,7 @@ function updateBoard(board_no){
                </tr>
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
-                  <td colspan="3"><input name="board_content" id="editor"
-                     readonly="readonly" value="${dto.board_content}"
-                     style="width: 1000px; height: 205px;"></input></td>
+                  <td colspan="3"><input name="board_content" id="editor" readonly="readonly" value="${dto.board_content}" style="width: 1000px; height: 205px;"></input></td>
                </tr>
                <tr>
                   <td colspan="4">
