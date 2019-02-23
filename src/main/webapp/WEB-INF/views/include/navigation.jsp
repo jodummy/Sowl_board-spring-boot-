@@ -14,14 +14,14 @@
 			</div>
 			<div class="collapse navbar-collapse navbar-left" id="navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/../boardList">home</a></li>
+					<li><a href="/../boardList">Home</a></li>
 					<li><a href="/../boardList">공지사항</a></li>
 					
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="login-signin"><a href="login.html">로그인</a></li>
+					<li class="login-signin"><a href="/../logIn">로그인</a></li>
 				</ul>
 			</div>
 	</nav>

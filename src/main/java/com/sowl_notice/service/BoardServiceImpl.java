@@ -1,4 +1,4 @@
-package com.sowl_notice.service.Impl;
+package com.sowl_notice.service;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import com.sowl_notice.dao.BoardDao;
 import com.sowl_notice.model.BoardModel;
 import com.sowl_notice.model.Criteria;
 import com.sowl_notice.model.SearchCriteria;
-import com.sowl_notice.service.BoardService;
 
 @Service
 public class BoardServiceImpl implements BoardService {
