@@ -8,10 +8,10 @@
 
 <script>
 function deleteBoard(board_no){
-   location.href =  "/boardDelete?board_no="+board_no;
+   location.href =  "/board/boardDelete?board_no="+board_no;
 }
 function updateBoard(board_no){
-	location.href = "/boardUpdate?board_no="+board_no;
+	location.href = "/board/boardUpdate?board_no="+board_no;
 }
 </script>
 

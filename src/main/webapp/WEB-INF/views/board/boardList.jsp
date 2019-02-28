@@ -22,7 +22,7 @@
 				
 		 <c:forEach var="list" varStatus="i" items="${list}">
 		 <tr>
-		 		<th scope="row">${list.board_no }</th>
+		 		<th scope="row">${list.no }</th>
 				<td><a href="boardDetail?board_no=${list.board_no}">${list.board_title }</a></td>
 				<td>${list.board_writer }</td>
 				<td>${list.board_insertdate }</td>
@@ -66,17 +66,17 @@
     <ul class="pagination">
         <c:if test="${pageMaker.prev}">
             <li>
-                <a href="/boardList${pageMaker.makeSearch(pageMaker.startPage - 1)}">&laquo;</a>
+                <a href="/board/boardList${pageMaker.makeSearch(pageMaker.startPage - 1)}">&laquo;</a>
             </li>
         </c:if>
         <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
             <li <c:out value="${pageMaker.criteria.page == idx? 'class=active':''}"/>>
-                <a href="/boardList${pageMaker.makeSearch(idx)}">${idx}</a>
+                <a href="/board/boardList${pageMaker.makeSearch(idx)}">${idx}</a>
             </li>
         </c:forEach>
         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
             <li>
-                <a href="/boardList${pageMaker.makeSearch(pageMaker.endPage + 1)}">&raquo;</a>
+                <a href="/board/boardList${pageMaker.makeSearch(pageMaker.endPage + 1)}">&raquo;</a>
             </li>
         </c:if>
     </ul>
@@ -98,7 +98,7 @@
 
 <script>
 	function boardInsert() {
-		location.href = "/boardInsert"
+		location.href = "/board/boardInsert"
 	}
 	
 	 $(document).ready(function () {

@@ -8,26 +8,26 @@
 
 <body>
    <div class="container" style="padding-top: 60px;">
-      <form id ="insertBoardForm" name= "insertForm" method="post" action="/boardInsertpage">
+      <form id ="insertBoardForm" name= "insertForm" method="get" action="/boardInsertPage">
          <table class="table table-striped table-hover">
             <thead class="thead-dark">
    
                <tr>
                   <td>작성자</td>
                   <td>
-                     <input type="text" value="coogy" id ="board_writer" name="board_writer" readonly="readonly" /> 
+                     <input type="text" value="coogy" id ="board_writer" name="board_writer" readonly="readonly" required/> 
                   </td>
                </tr>
                <tr>
                   <td>제&nbsp;&nbsp;&nbsp;목</td>
                   <td colspan="3">
-                     <input class="form-control" type="text" id="board_title" name="board_title" />
+                     <input class="form-control" type="text" id="board_title" name="board_title" required/>
                   </td>
                </tr>
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
                   <td colspan="3">
-                     <textarea name="board_content" id="board_content" style="width: 1000px; height: 205px;"></textarea>
+                     <textarea name="board_content" id="board_content" style="width: 1000px; height: 205px;" required></textarea>
                   </td>
                </tr>
                <tr>

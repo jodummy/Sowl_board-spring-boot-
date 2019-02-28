@@ -2,19 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sowl_notice.dao.MemberDao">
-<select id="loginAction" parameterType="com.sowl_notice.model.MemberModel" resultType="com.sowl_notice.model.MemberModel">
-SELECT 
-					SOWL_USERNO,
-			        SOWL_ID,
-			        SOWL_PASSWORD,
-			        SOWL_NAME
-FROM 
-					SOWL_MEMBER
-WHERE	1=1
-					AND SOWL_ID = #{sowl_id}
-					AND SOWL_PASSWORD = #{sowl_password}
 
-</select>
+	<select id="readUser" parameterType="String" resultType="com.sowl_notice.model.MemberModel">
+		SELECT 
+							*
+		FROM 
+							SOWL_USER
+		WHERE	
+							USER_ID = #{user_id}
+	
+	</select>
+	<select id="readAuthority" parameterType="String" resultType="String">
+		SELECT
+							USER_AUTHONAME
+		FROM
+							SOWL_AUTHO
+		WHERE	
+							USER_ID = #{user_id}
+	
+	</select>
 
 
 </mapper>

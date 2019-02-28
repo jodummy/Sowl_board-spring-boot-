@@ -11,12 +11,12 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
-<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="resources/bootstrap/css/font-awesome.css">
-<link rel="stylesheet" href="resources/bootstrap/css/magnific-popup.css">
-<link rel="stylesheet" href="resources/bootstrap/css/animate.css">
-<link rel="stylesheet" href="resources/bootstrap/css/style.css">
-<link rel="stylesheet" href="resources/bootstrap/css/common.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/font-awesome.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/magnific-popup.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/animate.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/style.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/common.css">
 
 <link rel="stylesheet" href="resources/bootstrap/css/hywang/bootstrap-grid.css">
 <style>
@@ -41,20 +41,20 @@ height:auto;
 </head>
 
 
-<div id="container" style="padding-top: 90px">
+<div id="container" style="padding-top: 50px">
 
 </div>
 
-<script type="text/javascript" src="resources/bootstrap/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery-1.11.2.min.js"></script>
 
 <!-- Load Booststrap -->
-<script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/bootstrap.js"></script>
 
 <!-- Load custom js plugins -->
-<script type="text/javascript" src="resources/bootstrap/js/jquery.mixitup.js"></script>
-<script type="text/javascript" src="resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="resources/bootstrap/js/wow.js"></script>
-<script type="text/javascript" src="resources/bootstrap/js/smooth-scroll.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery.mixitup.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/wow.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/smooth-scroll.js"></script>
 
 <!-- Load custom js for theme -->
-<script type="text/javascript" src="resources/bootstrap/js/app.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/app.js"></script>

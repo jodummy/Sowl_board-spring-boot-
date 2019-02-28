@@ -7,7 +7,7 @@
 
 <script>
 function cancelBoard(board_no){
-	   location.href = "/boardDetail?board_no="+board_no;
+	   location.href = "/board/boardDetail?board_no="+board_no;
 }
 </script>
 
@@ -15,25 +15,25 @@ function cancelBoard(board_no){
 <body>
 
    <div class="container" style="padding-top: 60px;">
-      <form id='updateBoard' action="/boardUpdatePage" name= "updateForm" method="post">
+      <form id='updateBoard' action="/boardUpdatePage" name= "updateForm" method="get">
          <input type="hidden" value="${dto.board_no}" name="board_no" id="board_no" />
          <table class="table table-striped table-hover">
             <thead class="thead-dark">
                <tr>
                   <td>작성자</td>
                   <td>
-                  	<input type="text" value="${dto.board_writer}" name="board_writer" id="board_writer"/></td>
+                  	<input type="text" value="${dto.board_writer}" name="board_writer" id="board_writer" required/></td>
                </tr>
                <tr>
                   <td>제&nbsp;&nbsp;&nbsp;목</td>
                   <td colspan="3">
-                  	<input class="form-control" type="text" value="${dto.board_title}" name="board_title" id="board_title"/>
+                  	<input class="form-control" type="text" value="${dto.board_title}"  name="board_title" id="board_title" required/>
                   </td>
                </tr>
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
                   <td colspan="3">
-                 	 <input name="board_content" id="editor" value="${dto.board_content}" style="width: 1000px; height: 205px;"></input>>
+                 	 <input name="board_content" id="editor" value="${dto.board_content}" style="width: 1000px; height: 205px;" required></input>
                  </td>
                </tr>
                <tr>
