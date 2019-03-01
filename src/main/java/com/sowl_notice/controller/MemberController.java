@@ -14,7 +14,7 @@ import com.sowl_notice.dao.MemberDao;
 
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	MemberDao memberDao;
 

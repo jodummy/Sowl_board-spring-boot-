@@ -51,4 +51,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.selectNoBoard();
 	}
 
+	@Override
+	public List<BoardModel> jsonList() {
+		return dao.jsonList();
+	}
+
 }

@@ -16,19 +16,9 @@ public class SowlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SowlApplication.class, args);
 	}
-	 /*
-     * SqlSessionFactory 설정 
-     * 2019-02-19
-     */
-//    @Bean
-//    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
-//        
-//        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-//        
-//        sessionFactory.setDataSource(dataSource);
-//        return sessionFactory.getObject();        
-//    }
-//	
+	
+	
+	
 	@Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 

@@ -21,5 +21,7 @@ public interface BoardDao {
 	
 	List<BoardModel> listSearchPaging(Criteria criteria) throws Exception;
 	
+	List<BoardModel> jsonList();
+	
 	
 }

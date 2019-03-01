@@ -3,6 +3,22 @@
 
 <mapper namespace="com.sowl_notice.dao.BoardDao">
 
+		<select id= "jsonList" resultType="com.sowl_notice.model.BoardModel">
+		SELECT
+                            @rownum:=@rownum+1 No,
+                            BOARD_NO,
+                            BOARD_TITLE,
+                            BOARD_CONTENT,
+                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            BOARD_WRITER
+        FROM 
+                            SOWL_BOARD,
+                            (SELECT @rownum:=0) r
+        WHERE               BOARD_NO > 0
+		</select>
+
+
+
 	   <select id="listSearchPaging" resultType="com.sowl_notice.model.BoardModel">
      <![CDATA[
         SELECT

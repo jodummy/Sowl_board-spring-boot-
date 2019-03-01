@@ -20,4 +20,6 @@ public interface BoardService {
 	int selectBoardListCnt(SearchCriteria criteria) throws Exception;
 
 	List<BoardModel> listSearchPaging(SearchCriteria criteria) throws Exception;
+	
+	List<BoardModel> jsonList();
 }
