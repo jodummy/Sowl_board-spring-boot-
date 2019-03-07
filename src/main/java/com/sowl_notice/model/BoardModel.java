@@ -12,8 +12,6 @@ public class BoardModel  {
 	private String board_content;
 	private String board_insertdate;
 	
-	private long bbs_sno;
-	private long blt_rsrc_sno;
 	
 	
 	@Override
