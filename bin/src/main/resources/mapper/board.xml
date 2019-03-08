@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sowl_notice.dao.BoardDao">
+
+		<select id= "jsonList" resultType="com.sowl_notice.model.BoardModel">
+		SELECT
+                            @rownum:=@rownum+1 No,
+                            BOARD_NO,
+                            BOARD_TITLE,
+                            BOARD_CONTENT,
+                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            BOARD_WRITER
+        FROM 
+                            SOWL_BOARD,
+                            (SELECT @rownum:=0) r
+        WHERE               BOARD_NO > 0
+		</select>
+
+
+
+	   <select id="listSearchPaging" resultType="com.sowl_notice.model.BoardModel">
+     <![CDATA[
+        SELECT
+                            @rownum:=@rownum+1 No,
+                            BOARD_NO,
+                            BOARD_TITLE,
+                            BOARD_CONTENT,
+                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            BOARD_WRITER
+        FROM 
+                            SOWL_BOARD,
+                            (SELECT @rownum:=0) r
+        WHERE               BOARD_NO > 0
+        ]]>
+        <include refid="search"/>
+        <![CDATA[
+        ORDER BY BOARD_NO DESC, BOARD_INSERTDATE DESC,No
+        LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+
+
+    <insert id="insertBoard" parameterType="com.sowl_notice.model.BoardModel">
+    INSERT 
+    INTO
+    SOWL_BOARD
+                        (BOARD_WRITER , BOARD_TITLE , BOARD_CONTENT ) 
+    VALUES
+                        (#{board_writer},#{board_title},#{board_content}  )
+    </insert>
+
+    <select id="getBoard" parameterType="int" resultType="com.sowl_notice.model.BoardModel">
+    SELECT 
+                        BOARD_TITLE,
+                        BOARD_NO,
+                        BOARD_CONTENT,
+                        DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_DATE,
+                        BOARD_WRITER
+    FROM SOWL_BOARD
+    WHERE 
+    BOARD_NO=           #{board_no}
+    </select>
+    
+    <delete id="delBoard" parameterType="int">
+    DELETE 
+    FROM
+                        SOWL_BOARD 
+    WHERE               
+    BOARD_NO=           #{board_no} 
+
+    </delete>
+    <update id="updateBoard" parameterType="com.sowl_notice.model.BoardModel" >
+    UPDATE 
+                        SOWL_BOARD 
+    SET 
+    					BOARD_TITLE=        #{board_title}, 
+   						BOARD_CONTENT=      #{board_content} 
+    WHERE 
+    					BOARD_NO=           #{board_no}
+    </update>
+
+    <select id= "selectBoardListCnt" resultType="int">
+     <![CDATA[
+        SELECT 
+                        COUNT(BOARD_NO)
+        FROM 
+                        SOWL_BOARD
+        WHERE BOARD_NO > 0
+        ]]>
+        <include refid="search"/>
+    </select>
+
+
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 't'.toString()">
+                AND BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType == 'c'.toString()">
+                AND BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType == 'w'.toString()">
+                AND BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType == 'tc'.toString()">
+                AND (
+                BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+            <if test="searchType == 'cw'.toString()">
+                AND (
+                BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+            <if test="searchType == 'tcw'.toString()">
+                AND (
+                BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+                OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+        </if>
+    </sql>
+    <select id="selectNoBoard" resultType="com.sowl_notice.model.BoardModel" >
+    	SELECT 
+                    @rownum:=@rownum+1 No
+        FROM 
+                    SOWL_BOARD,
+        (SELECT @rownum:=0)
+                    r
+    </select>
+
+
+
+
+
+
+
+
+</mapper>

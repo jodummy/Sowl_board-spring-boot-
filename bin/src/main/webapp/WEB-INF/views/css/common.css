@@ -1,0 +1,79 @@
+body {
+font-family: 'Jua', sans-serif;
+}
+
+a:hover,
+a:focus{
+  color: #00f
+}
+/*************************
+NAVBAR
+*************************/
+.navbar-default {
+  background-color: #fff;
+  margin-bottom: 0;
+  height: 90px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #d2d2d2;
+  transition: all 0.250s;
+}
+
+.navbar-default .nav {
+  margin-top: 19px;
+  margin-bottom: 19px;
+}
+
+.navbar-default .nav li a {
+  font-size: 20px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #000;
+  border: 1px solid #00f;
+}
+
+.navbar-small {
+  height: 50px;
+}
+
+.navbar-small .navbar-brand {
+  padding: 2px 15px;
+}
+
+.navbar-small .nav {
+  margin-top: 0px;
+  border: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+  border: none;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #00F;
+  border: none;
+}
+
+.navbar-default .navbar-nav > li > a{
+	border: none;
+
+}
+
+.login-signin{
+  background-color: #fff;
+  border: 1px | #aaa;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.login-signin:hover,
+.login-signin:focus{
+  border-color: #777;
+  color: #000;
+}
