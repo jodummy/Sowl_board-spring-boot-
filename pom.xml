@@ -13,6 +13,7 @@
 	<artifactId>sowl</artifactId>
 	<version>1.0</version>
 	<name>sowl</name>
+	<packaging>war</packaging>
 	<description>react admin webpage</description>
 
 	<properties>
