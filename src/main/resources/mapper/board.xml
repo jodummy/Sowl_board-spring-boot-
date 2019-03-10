@@ -3,8 +3,8 @@
 
 <mapper namespace="com.sowl_notice.dao.BoardDao">
 
-		<select id= "jsonList" resultType="com.sowl_notice.model.BoardModel">
-		SELECT
+      <select id= "jsonList" resultType="com.sowl_notice.model.BoardModel">
+      SELECT
                             @rownum:=@rownum+1 No,
                             BOARD_NO,
                             BOARD_TITLE,
@@ -15,10 +15,10 @@
                             SOWL_BOARD,
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
-		</select>
+      </select>
 
 
-	   <select id="listSearchPaging" resultType="com.sowl_notice.model.BoardModel">
+      <select id="listSearchPaging" resultType="com.sowl_notice.model.BoardModel">
      <![CDATA[
         SELECT
                             @rownum:=@rownum+1 No,
@@ -31,6 +31,7 @@
                             SOWL_BOARD,
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
+        AND             BOARD_DELFLAG = 'N'
         ]]>
         <include refid="search"/>
         <![CDATA[
@@ -60,23 +61,24 @@
     WHERE 
     BOARD_NO=           #{board_no}
     </select>
-    
-    <delete id="delBoard" parameterType="int">
-    DELETE 
-    FROM
-                        SOWL_BOARD 
-    WHERE               
-    BOARD_NO=           #{board_no} 
 
-    </delete>
+    <update   id="delBoard" parameterType="int">
+    UPDATE
+                   SOWL_BOARD 
+    SET  
+                   BOARD_DELFLAG = 'Y' 
+    WHERE 
+                   BOARD_NO =  #{board_no} 
+    </update>
+
     <update id="updateBoard" parameterType="com.sowl_notice.model.BoardModel" >
     UPDATE 
                         SOWL_BOARD 
     SET 
-    					BOARD_TITLE=        #{board_title}, 
-   						BOARD_CONTENT=      #{board_content} 
+                   BOARD_TITLE=        #{board_title}, 
+                     BOARD_CONTENT=      #{board_content} 
     WHERE 
-    					BOARD_NO=           #{board_no}
+                   BOARD_NO=           #{board_no}
     </update>
 
     <select id= "selectBoardListCnt" resultType="int">
@@ -85,7 +87,8 @@
                         COUNT(BOARD_NO)
         FROM 
                         SOWL_BOARD
-        WHERE BOARD_NO > 0
+        WHERE          BOARD_NO > 0
+        AND          BOARD_DELFLAG = 'N'
         ]]>
         <include refid="search"/>
     </select>
@@ -123,13 +126,14 @@
             </if>
         </if>
     </sql>
+    
     <select id="selectNoBoard" resultType="com.sowl_notice.model.BoardModel" >
-    	SELECT 
-                    @rownum:=@rownum+1 No
+       SELECT 
+                                   @rownum:=@rownum+1 No
         FROM 
-                    SOWL_BOARD,
-        (SELECT @rownum:=0)
-                    r
+                                   SOWL_BOARD,
+        (SELECT @rownum:=0)            r
+          WHERE                     BOARD_DELFLAG = 'N'
     </select>
 
 
