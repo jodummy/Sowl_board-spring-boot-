@@ -18,7 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//ADMIN 계정 정보 세팅 , 서버를 새로 업데이트한다(inMemoryAuthentication)
-		auth.inMemoryAuthentication().withUser("admin").password("{noop}master001").roles("ADMIN");
+//		auth.inMemoryAuthentication().withUser("admin").password("{noop}master001").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("test").password("{noop}1").roles("ADMIN");
 	}
 
 	@Override
