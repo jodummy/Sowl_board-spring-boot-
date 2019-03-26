@@ -36,11 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin().permitAll() //누구나 접근이 가능해야 한다.
 		.and()
-		.logout().permitAll().logoutSuccessUrl("/")
-		.and()
-		.rememberMe()
-			.rememberMeParameter("remember-me")
-			.tokenValiditySeconds(3600);
+		.logout().permitAll().logoutSuccessUrl("/");
 	}
 	
 	

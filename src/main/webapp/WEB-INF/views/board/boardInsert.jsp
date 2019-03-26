@@ -15,19 +15,19 @@
                <tr>
                   <td>작성자</td>
                   <td>
-                     <input type="text" id ="board_writer" name="board_writer" value="${writer }" readonly="readonly"/> 
+                     <input type="text" id ="board_writer" name="board_writer" value="${writer }" readonly="readonly" style="width: 1100px;"/> 
                   </td>
                </tr>
                <tr>
                   <td>제&nbsp;&nbsp;&nbsp;목</td>
                   <td colspan="3">
-                     <input class="form-control" type="text" id="board_title" name="board_title" required/>
+                     <input type="text" value="${dto.board_title}" name="board_title" style="width: 1100px; height:50px" />
                   </td>
                </tr>
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
                   <td colspan="3">
-                     <textarea name="board_content" id="board_content" style="width: 1000px; height: 205px;" required></textarea>
+                     <textarea name="board_content" id="editor" style="width: 1100px; height: 205px;">${dto.board_content}</textarea>
                   </td>
                </tr>
                <tr>

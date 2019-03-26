@@ -22,18 +22,18 @@ function cancelBoard(board_no){
                <tr>
                   <td>작성자</td>
                   <td>
-                  	<input type="text" value="${dto.board_writer}" name="board_writer" id="board_writer" required/></td>
+                     <input type="text" value="${dto.board_writer}" readonly="readonly" name="board_writer" style="width: 1100px;"/> 
                </tr>
                <tr>
                   <td>제&nbsp;&nbsp;&nbsp;목</td>
                   <td colspan="3">
-                  	<input class="form-control" type="text" value="${dto.board_title}"  name="board_title" id="board_title" required/>
+                     <input type="text" value="${dto.board_title}" name="board_title" style="width: 1100px; height:50px" />
                   </td>
                </tr>
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
                   <td colspan="3">
-                 	 <textarea name="board_content" id="editor" style="width: 1100px; height: 205px;">${dto.board_content}</textarea>
+                     <textarea name="board_content" id="editor" style="width: 1100px; height: 205px;">${dto.board_content}</textarea>
                  </td>
                </tr>
                <tr>

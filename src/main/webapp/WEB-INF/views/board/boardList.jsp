@@ -10,7 +10,6 @@
   
 <body>
 	<div class= "container">
-	<h3 class="box-title">게시글 목록 (${totalCount})</h3>
 	<table style="margin: auto" class="table table-striped table-hover">
 		<tr>
 			<th>NO</th>
