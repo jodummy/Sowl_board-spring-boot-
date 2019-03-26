@@ -20,6 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//ADMIN 계정 정보 세팅 , 서버를 새로 업데이트한다(inMemoryAuthentication)
 //		auth.inMemoryAuthentication().withUser("admin").password("{noop}master001").roles("ADMIN");
 		auth.inMemoryAuthentication().withUser("test").password("{noop}1").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("박동현").password("{noop}1").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("김동욱").password("{noop}1").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("감자2치킨1").password("{noop}1").roles("ADMIN");
+
+
 	}
 
 	@Override
@@ -31,7 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin().permitAll() //누구나 접근이 가능해야 한다.
 		.and()
-		.logout().permitAll().logoutSuccessUrl("/");
+		.logout().permitAll().logoutSuccessUrl("/")
+		.and()
+		.rememberMe()
+			.rememberMeParameter("remember-me")
+			.tokenValiditySeconds(3600);
 	}
 	
 	

@@ -24,17 +24,16 @@ function updateBoard(board_no){
             <thead class="thead-dark">
                <tr>
                   <td>작성자</td>
-                  <td><input type="text" value="${dto.board_writer}"
-                     name="board_writer" readonly="readonly" /></td>
+                  <td><input type="text" value="${dto.board_writer}" name="board_writer" readonly="readonly" style="width: 1100px;"/></td>
                </tr>
                <tr>
                   <td>제&nbsp;&nbsp;&nbsp;목</td>
-                  <td colspan="3"><input class="form-control" type="text" value="${dto.board_title}" name="board_title" readonly="readonly" />
+                  <td colspan="3"><input type="text" value="${dto.board_title}" name="board_title" style="width: 1100px; height:50px" readonly="readonly"/>
                   </td>
                </tr>
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
-                  <td colspan="3"><input name="board_content" id="editor" readonly="readonly" value="${dto.board_content}" style="width: 1000px; height: 205px;"></input></td>
+                  <td colspan="3"><textarea name="board_content" id="editor" readonly="readonly" style="width: 1100px; height: 205px;">${dto.board_content}</textarea></td>
                </tr>
                <tr>
                   <td colspan="4">

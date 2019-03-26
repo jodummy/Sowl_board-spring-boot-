@@ -15,7 +15,7 @@
                <tr>
                   <td>작성자</td>
                   <td>
-                     <input type="text" id ="board_writer" name="board_writer" required/> 
+                     <input type="text" id ="board_writer" name="board_writer" value="${writer }" readonly="readonly"/> 
                   </td>
                </tr>
                <tr>

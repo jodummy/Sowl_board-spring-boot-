@@ -1,5 +1,6 @@
 package com.sowl_notice.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/board/boardInsert", method = RequestMethod.GET) // URL 주소
-	public String boardInsert() {
+	public String boardInsert(Model model, Principal principal) {		
+		model.addAttribute("writer",principal.getName());
 		return "/board/boardInsert";// JSP 파일명
 	}
 
@@ -67,8 +69,6 @@ public class BoardController {
 
 	@RequestMapping(value = "/board/boardDelete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String boardDelete(BoardModel boardModel, @RequestParam("board_no") String board_no) {
-		System.out.println("board delete");
-		System.out.println(board_no);
 		int no = Integer.parseInt(board_no);
 		if (no > 0 & board_no != null) {
 			boardService.delBoard(no);

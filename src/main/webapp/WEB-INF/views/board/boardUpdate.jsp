@@ -33,7 +33,7 @@ function cancelBoard(board_no){
                <tr>
                   <td class="boardAreaTitleModal">내&nbsp;&nbsp;&nbsp;용</td>
                   <td colspan="3">
-                 	 <input name="board_content" id="editor" value="${dto.board_content}" style="width: 1000px; height: 205px;" required></input>
+                 	 <textarea name="board_content" id="editor" style="width: 1100px; height: 205px;">${dto.board_content}</textarea>
                  </td>
                </tr>
                <tr>
