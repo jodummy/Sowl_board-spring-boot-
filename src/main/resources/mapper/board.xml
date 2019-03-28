@@ -97,36 +97,14 @@
 
 
     <sql id="search">
-        <if test="searchType != null">
-            <if test="searchType == 't'.toString()">
-                AND BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType == 'c'.toString()">
-                AND BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType == 'w'.toString()">
-                AND BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType == 'tc'.toString()">
-                AND (
-                BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
-                OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
-                )
-            </if>
-            <if test="searchType == 'cw'.toString()">
-                AND (
-                BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
-                OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
-                )
-            </if>
-            <if test="searchType == 'tcw'.toString()">
-                AND (
-                BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
-                OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
-                OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
-                )
-            </if>
+        <if test="keyword != null">
+            AND (
+            BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+            OR BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%')
+            OR BOARD_WRITER LIKE CONCAT('%', #{keyword}, '%')
+            )
         </if>
+      
     </sql>
     
     <select id="selectNoBoard" resultType="com.sowl_notice.model.BoardModel" >

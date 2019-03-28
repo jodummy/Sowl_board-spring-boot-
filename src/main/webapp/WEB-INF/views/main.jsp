@@ -1,16 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file="/WEB-INF/views/include/navigation.jsp"%>
 <%@ include file="/WEB-INF/views/include/includeURL.jsp"%>
-<style>
-.mainContainer{
-background-image: url("/resources/bootstrap/img/1-02.png");
-background-position: center;
-background-repeat: no-repeat;
-height : 750px;
-}
-</style>
 
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +15,7 @@ height : 750px;
 
 <body>
 	<div class = "mainContainer">
-	
+		<a href = "board/boardList">게시판</a>		
 	</div>
 </body>
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-
 </html>

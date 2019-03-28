@@ -38,7 +38,7 @@ public class BoardController {
 		model.addAttribute("totalCount", boardService.selectBoardListCnt(criteria));
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("listNo", boardService.selectNoBoard());
-
+System.out.println(criteria.getKeyword());
 		return "/board/boardList";
 	}
 
