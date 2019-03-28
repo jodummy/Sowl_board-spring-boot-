@@ -16,7 +16,7 @@
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
         ORDER BY
-        					BOARD_NO DESC
+        					NO DESC
       </select>
 
 
