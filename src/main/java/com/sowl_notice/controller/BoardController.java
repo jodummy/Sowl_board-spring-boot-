@@ -86,20 +86,17 @@ System.out.println(criteria.getKeyword());
 	}
 
 	@RequestMapping("/boardUpdatePage")
-	public String boardUpdatePage(@RequestParam("board_no") int board_no,
-			@RequestParam("board_writer") String board_writer, @RequestParam("board_title") String board_title,
-			@RequestParam("board_content") String board_content, BoardModel boardModel) {
-		try {
-			boardModel.setBoard_no(board_no);
-			boardModel.setBoard_writer(board_writer);
-			boardModel.setBoard_title(board_title);
-			boardModel.setBoard_content(board_content);
-			boardService.updateBoard(boardModel);
-			return "redirect:/board/boardDetail?board_no=" + board_no;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return "/board/boardUpdate?board_no=" + board_no;
-
-	}
+	   public String boardUpdatePage(BoardModel boardModel) {
+	      try {
+	         boardModel.setBoard_no(boardModel.getBoard_no());
+	         boardModel.setBoard_writer(boardModel.getBoard_writer());
+	         boardModel.setBoard_title(boardModel.getBoard_title());
+	         boardModel.setBoard_content(boardModel.getBoard_content());
+	         boardService.updateBoard(boardModel);
+	         return "redirect:/board/boardDetail?board_no=" + boardModel.getBoard_no();
+	      } catch (Exception e) {
+	         System.out.println(e.getMessage());
+	      }
+	      return "/board/boardUpdate?board_no=" + boardModel.getBoard_no();
+	   }
 }
