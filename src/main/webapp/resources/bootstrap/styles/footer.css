@@ -1,0 +1,21 @@
+.footer{
+	text-align: center;
+}
+.container{
+	margin: 0px auto;
+}
+.footer .footer_background{
+	background-color: black;
+}
+
+.footer_logo a{
+	color: white;
+}
+.footer_logo{
+	padding-top: 3%;
+	margin:0 auto;
+}
+.copyright.ml-auto.mr-auto{
+	margin:0 auto;
+	color:white;
+}

@@ -17,7 +17,9 @@
 <link rel="stylesheet" href="/resources/bootstrap/styles/product_responsive.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/product.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/mystyle.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/footer.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/board.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/navigation.css">
 
 
 
@@ -52,7 +54,7 @@
 </body>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
-
+<%@ include file="/WEB-INF/views/include/navigation.jsp"%>
 
 <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.11.2.min.js"></script>
 

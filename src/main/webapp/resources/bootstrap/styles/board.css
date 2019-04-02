@@ -1,0 +1,16 @@
+#board{
+	margin-top: 80px;
+}
+.form-group.col-sm-9{
+	margin-left: 12%; 
+	margin-right: 12%;
+}
+.li_button{
+	margin-left:80%;
+}
+#board table{
+	margin : 0 auto;
+}
+td{
+	margin : 0 auto;
+}

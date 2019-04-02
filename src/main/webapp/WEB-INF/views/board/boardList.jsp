@@ -8,11 +8,11 @@
 <title>boardList</title>
   
 <body>
-   <div class= "container">
+   <div class= "container" id = "board">
    <table>
       <tr>
          <th>NO</th>
-         <th style="text-align: center">제목</th>
+         <th>제목</th>
          <th>작성자</th>
          <th>작성일</th>
       </tr>
@@ -30,7 +30,7 @@
    </table>
    <br />
    <ul class="searching">
-      <li><button type="button" onclick="boardInsert()"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li><br>
+      <li class="li_button"><button type="button" onclick="boardInsert()"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li><br>
 <!--       <li><input type="button" onclick="boardInsert()" value="글쓰기"></li> -->
       <li> <%--검색 처리 영역--%>
   
