@@ -7,6 +7,7 @@ import com.sowl_notice.model.Criteria;
 import com.sowl_notice.model.SearchCriteria;
 
 public interface BoardDao {
+
 	List<BoardModel> selectNoBoard();
 
 	int insertBoard(BoardModel boardModel);
@@ -16,12 +17,11 @@ public interface BoardDao {
 	int delBoard(int board_no);
 
 	int updateBoard(BoardModel boardModel);
-	
+
 	int selectBoardListCnt(SearchCriteria criteria) throws Exception;
-	
+
 	List<BoardModel> listSearchPaging(Criteria criteria) throws Exception;
-	
+
 	List<BoardModel> jsonList();
-	
-	
+
 }

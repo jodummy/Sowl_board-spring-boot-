@@ -31,19 +31,23 @@ public class BoardController {
 	@RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
 	public String boardList(@ModelAttribute("criteria") SearchCriteria criteria, Model model, BoardModel boardModel)
 			throws Exception {
+
 		PageMaker pageMaker = new PageMaker();
+		// 검색어 처리 하는곳
 		pageMaker.setCriteria(criteria);
+		// 게시물 토탈 출력
 		pageMaker.setTotalCount(boardService.selectBoardListCnt(criteria));
 		model.addAttribute("list", boardService.listSearchPaging(criteria));
-		model.addAttribute("totalCount", boardService.selectBoardListCnt(criteria));
 		model.addAttribute("pageMaker", pageMaker);
-		model.addAttribute("listNo", boardService.selectNoBoard());
+
+		System.out.println("검색 어 출력 : " + criteria.toString());
+		System.out.println("게시물 총 개수  : " + pageMaker.getTotalCount());
 		return "/board/boardList";
 	}
 
 	@RequestMapping(value = "/board/boardInsert", method = RequestMethod.GET) // URL 주소
-	public String boardInsert(Model model, Principal principal) {		
-		model.addAttribute("writer",principal.getName());
+	public String boardInsert(Model model, Principal principal) {
+		model.addAttribute("writer", principal.getName());
 		return "/board/boardInsert";// JSP 파일명
 	}
 
@@ -85,17 +89,17 @@ public class BoardController {
 	}
 
 	@RequestMapping("/boardUpdatePage")
-	   public String boardUpdatePage(BoardModel boardModel) {
-	      try {
-	         boardModel.setBoard_no(boardModel.getBoard_no());
-	         boardModel.setBoard_writer(boardModel.getBoard_writer());
-	         boardModel.setBoard_title(boardModel.getBoard_title());
-	         boardModel.setBoard_content(boardModel.getBoard_content());
-	         boardService.updateBoard(boardModel);
-	         return "redirect:/board/boardDetail?board_no=" + boardModel.getBoard_no();
-	      } catch (Exception e) {
-	         System.out.println(e.getMessage());
-	      }
-	      return "/board/boardUpdate?board_no=" + boardModel.getBoard_no();
-	   }
+	public String boardUpdatePage(BoardModel boardModel) {
+		try {
+			boardModel.setBoard_no(boardModel.getBoard_no());
+			boardModel.setBoard_writer(boardModel.getBoard_writer());
+			boardModel.setBoard_title(boardModel.getBoard_title());
+			boardModel.setBoard_content(boardModel.getBoard_content());
+			boardService.updateBoard(boardModel);
+			return "redirect:/board/boardDetail?board_no=" + boardModel.getBoard_no();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "/board/boardUpdate?board_no=" + boardModel.getBoard_no();
+	}
 }

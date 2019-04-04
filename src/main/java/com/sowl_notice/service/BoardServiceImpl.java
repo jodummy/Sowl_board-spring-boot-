@@ -1,7 +1,6 @@
 package com.sowl_notice.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	public BoardModel getBoard(int board_no) {
 		return dao.getBoard(board_no);
 	}
-	
+
 	@Override
 	public int delBoard(int board_no) {
 		return dao.delBoard(board_no);

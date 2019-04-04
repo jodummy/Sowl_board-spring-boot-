@@ -11,13 +11,6 @@ public class BoardModel  {
 	private String board_title;
 	private String board_content;
 	private String board_insertdate;
-	
-	
-	
-	@Override
-	public String toString() {
-		String no = this.no+"";
-		return no;
-	}
+	private int board_category;
 	
 }
