@@ -32,6 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/webjars/**").permitAll();
 		http.authorizeRequests().antMatchers("/resources/**").permitAll();
 		http.authorizeRequests()
+		.antMatchers("/QnA/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
+		.and()
+		.formLogin().permitAll() //누구나 접근이 가능해야 한다.
+		.and()
+		.logout().permitAll().logoutSuccessUrl("/");
+		http.authorizeRequests()
 		.antMatchers("/board/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
 		.and()
 		.formLogin().permitAll() //누구나 접근이 가능해야 한다.

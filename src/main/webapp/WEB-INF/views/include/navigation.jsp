@@ -11,7 +11,7 @@
                               <a href="/">Home</a>
                            </li>
                            <li class="hassubs">
-                              <a href="board/boardList">Categories</a>
+                              <a href="/board/boardList">Categories</a>
                               <ul>
                                  <li><a href="categories.html">1</a></li>
                                  <li><a href="categories.html">2</a></li>
@@ -20,7 +20,7 @@
                                  <li><a href="categories.html">5</a></li>
                               </ul>
                            </li>
-                           <li><a href="#">QnA</a></li>
+                           <li><a href="/QnA/QnA">QnA</a></li>
                            <li><a href="#">Anything</a></li>
                         </ul>
                      </nav>
