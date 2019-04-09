@@ -34,4 +34,19 @@ public class QnAServiceImpl implements QnAService{
       return qnadao.qnaUpdate(qnaModel);
    }
 
+   @Override
+	public int commentUpdate(QnAModel qnaModel) {
+		return qnadao.commentUpdate(qnaModel);
+	}
+
+	@Override
+	public int deleteComment(int qna_no) {
+		return qnadao.deleteComment(qna_no);
+	}
+
+	@Override
+	public int updateComment(QnAModel qnaModel) {
+		return qnadao.commentUpdate(qnaModel);
+	}
+
 }

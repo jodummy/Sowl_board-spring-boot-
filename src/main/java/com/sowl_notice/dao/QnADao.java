@@ -9,4 +9,8 @@ public interface QnADao {
    int qnaInsert(QnAModel qnaModel);
    int qnaDelete(int qna_no);
    int qnaUpdate(QnAModel qnaModel);
+   int commentUpdate(QnAModel qnaModel);
+   int deleteComment(int qna_no);
+   int updateComment(QnAModel qnaModel);
+   
 }

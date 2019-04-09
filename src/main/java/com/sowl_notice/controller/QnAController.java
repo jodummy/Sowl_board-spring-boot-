@@ -51,4 +51,22 @@ public class QnAController {
       qnaService.qnaUpdate(qnaModel);
       return "redirect:/QnA/QnA";
    }
+   
+   @RequestMapping(value = "/QnA/commentInsert", method = RequestMethod.GET)
+   public String commentInsert(QnAModel qnaModel) {
+	  qnaService.commentUpdate(qnaModel);
+      return "redirect:/QnA/QnA";
+   }   
+   
+   @RequestMapping(value = "/QnA/commentDelete", method = RequestMethod.GET)
+   public String commentDelete(QnAModel qnaModel) {
+	  qnaService.deleteComment(qnaModel.getQna_no());
+      return "redirect:/QnA/QnA";
+   }  
+   
+   @RequestMapping(value = "/QnA/commentUpdate", method = RequestMethod.GET)
+   public String commentUpdate(QnAModel qnaModel) {
+	   qnaService.commentUpdate(qnaModel);
+      return "redirect:/QnA/QnA";
+   }  
 }
