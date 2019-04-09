@@ -3,21 +3,13 @@ package com.sowl_notice.controller;
 import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.util.SystemPropertyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.jayway.jsonpath.Criteria;
 import com.sowl_notice.model.BoardModel;
 import com.sowl_notice.model.PageMaker;
 import com.sowl_notice.model.SearchCriteria;
@@ -65,16 +57,14 @@ public class BoardController {
 		return "/board/boardDetail";
 	}
 
-	@RequestMapping(value = "/boardDelete", method = { RequestMethod.GET, RequestMethod.POST })
-	public String boardDelete(BoardModel boardModel, @RequestParam("board_no") String board_no, int board_category) {
-		int no = Integer.parseInt(board_no);
-
-		if (no > 0 & board_no != null) {
-			boardService.delBoard(no);
-			return "redirect:/board/boardList?board_category=" + board_category;
-		} else
-			return "redirect:/board/boardDetail?board_no=" + board_no + "?";
-
+	@RequestMapping(value = "/boardDelete", method=RequestMethod.GET)
+	public String boardDelete(BoardModel boardModel/*, @RequestParam("board_no") String board_no, int board_category*/) {
+		System.out.println( boardModel.getBoard_category() + "++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println( boardModel.getBoard_no() + "-------------------------------------------------");
+		System.out.println("1");
+		boardService.delBoard(boardModel.getBoard_no());
+		System.out.println(2);
+		return "redirect:/board/boardList?board_category=" + boardModel.getBoard_category();
 	}
 
 	@RequestMapping(value = "/board/boardUpdate", method = RequestMethod.GET)

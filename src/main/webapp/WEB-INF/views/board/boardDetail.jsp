@@ -8,7 +8,7 @@
 <script>
 function deleteBoard(board_no,board_category){
    if(confirm("삭제하시겠습니까?")){
-      location.href =  "/board/boardDelete?board_no="+board_no +"&board_category="+board_category;
+      location.href = "/boardDelete?board_no="+board_no +"&board_category="+board_category;
       }
    return false;
 }
