@@ -15,6 +15,7 @@
                             SOWL_BOARD,
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
+        AND 				BOARD_DELFLAG = 'N'
         ORDER BY
         					NO DESC
       </select>

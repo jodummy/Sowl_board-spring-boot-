@@ -58,12 +58,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/boardDelete", method=RequestMethod.GET)
-	public String boardDelete(BoardModel boardModel/*, @RequestParam("board_no") String board_no, int board_category*/) {
-		System.out.println( boardModel.getBoard_category() + "++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println( boardModel.getBoard_no() + "-------------------------------------------------");
-		System.out.println("1");
+	public String boardDelete(BoardModel boardModel) {
 		boardService.delBoard(boardModel.getBoard_no());
-		System.out.println(2);
 		return "redirect:/board/boardList?board_category=" + boardModel.getBoard_category();
 	}
 
