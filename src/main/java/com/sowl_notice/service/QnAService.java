@@ -5,7 +5,9 @@ import java.util.List;
 import com.sowl_notice.model.QnAModel;
 
 public interface QnAService {
-	List<QnAModel> qnaList();
-	int qnaInsert(QnAModel qnaModel);
+   List<QnAModel> qnaList();
+   int qnaInsert(QnAModel qnaModel);
+   int qnaDelete(int qna_no);
+   int qnaUpdate(QnAModel qnaModel);
 
 }

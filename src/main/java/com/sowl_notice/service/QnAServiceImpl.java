@@ -10,18 +10,28 @@ import com.sowl_notice.model.QnAModel;
 
 @Service
 public class QnAServiceImpl implements QnAService{
-	
-	@Autowired
-	QnADao qnadao;
+   
+   @Autowired
+   QnADao qnadao;
 
-	@Override
-	public List<QnAModel> qnaList() {
-		return qnadao.qnaList();
-	}
+   @Override
+   public List<QnAModel> qnaList() {
+      return qnadao.qnaList();
+   }
 
-	@Override
-	public int qnaInsert(QnAModel qnaModel) {
-		return qnadao.qnaInsert(qnaModel);
-	}
+   @Override
+   public int qnaInsert(QnAModel qnaModel) {
+      return qnadao.qnaInsert(qnaModel);
+   }
+
+   @Override
+   public int qnaDelete(int qna_no) {
+      return qnadao.qnaDelete(qna_no);
+   }
+
+   @Override
+   public int qnaUpdate(QnAModel qnaModel) {
+      return qnadao.qnaUpdate(qnaModel);
+   }
 
 }

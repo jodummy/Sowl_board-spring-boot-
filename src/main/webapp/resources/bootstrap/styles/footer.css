@@ -1,21 +1,25 @@
 .footer{
-	text-align: center;
+   text-align: center;
+   
 }
 .container{
-	margin: 0px auto;
+   margin: 0px auto;
 }
 .footer .footer_background{
-	background-color: black;
+   background-color: black;
 }
 
 .footer_logo a{
-	color: white;
+   color: white;
 }
 .footer_logo{
-	padding-top: 3%;
-	margin:0 auto;
+   padding-top: 3%;
+   margin:0 auto;
 }
 .copyright.ml-auto.mr-auto{
-	margin:0 auto;
-	color:white;
+   margin:0 auto;
+   color:white;
+}
+.footer_content.d-flex.flex-lg-row.flex-column.align-items-center.justify-content-lg-start.justify-content-center{
+   height: 150px;
 }

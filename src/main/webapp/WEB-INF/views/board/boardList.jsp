@@ -18,25 +18,24 @@
       </tr>
       
        <c:forEach var="list" varStatus="i" items="${list}">
-       <tr onclick="test(${list.board_no})">
+       <tr onclick="test(${list.board_no} , ${board_category} )">
              <th scope="row">${list.no }</th>
-            <td>${list.board_title }</a></td>
+            <td>${list.board_title }</td>
             <td>${list.board_writer }</td>
             <td>${list.board_insertdate }</td>
-            <input type="hidden" value="${list.board_no}" name="board_no" />
       </tr>
       </c:forEach>
       
    </table>
    <br />
    <ul class="searching">
-      <li class="li_button"><button type="button" onclick="boardInsert()"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li><br>
-<!--       <li><input type="button" onclick="boardInsert()" value="글쓰기"></li> -->
+      <li class="li_button"><button type="button" onclick="boardInsert('${board_category}')"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li>
       <li> <%--검색 처리 영역--%>
   
        <div class="form-group col-sm-9"> 
            <div class="input-group">
                <input type="text" class="form-control" name="keyword" id="keywordInput" value="${criteria.keyword}" placeholder="검색어">
+               <input type="hidden" name="category" id ="board_category" value= "${board_category}">
                <span class="input-group-btn">
                    <button type="button" class="btn btn-primary btn-flat" id="searchBtn">
                        <i class="fa fa-search"></i> 검색
@@ -53,17 +52,17 @@
     <ul class="pagination">
         <c:if test="${pageMaker.prev}">
             <li>
-                <a href="/board/boardList${pageMaker.makeSearch(pageMaker.startPage - 1)}">&laquo;</a>
+                <a href="/board/boardList${pageMaker.makeSearch(pageMaker.startPage - 1)}&board_category=${board_category}" >&laquo;</a>
             </li>
         </c:if>
         <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
             <li <c:out value="${pageMaker.criteria.page == idx? 'class=active':''}"/>>
-                <a href="/board/boardList${pageMaker.makeSearch(idx)}">${idx}</a>
+                <a href="/board/boardList${pageMaker.makeSearch(idx)}&board_category=${board_category}">${idx}</a>
             </li>
         </c:forEach>
         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
             <li>
-                <a href="/board/boardList${pageMaker.makeSearch(pageMaker.endPage + 1)}">&raquo;</a>
+                <a href="/board/boardList${pageMaker.makeSearch(pageMaker.endPage + 1)}&board_category=${board_category}" >&raquo;</a>
             </li>
         </c:if>
     </ul>
@@ -83,11 +82,11 @@
 
 
 <script>
-   function boardInsert() {
-      location.href = "/board/boardInsert"
+   function boardInsert(board_category) {
+      location.href = "/board/boardInsert?board_category="+board_category;
    }
-   function test(no) {
-      location.href ="boardDetail?board_no=" + no;
+   function test(no , board_category) {
+      location.href ="boardDetail?board_no=" + no +"&board_category="+board_category;
    }
    
     $(document).ready(function () {
@@ -97,7 +96,8 @@
            // 검색 버튼 클릭시
            $("#searchBtn").on("click", function () {
                self.location = "boardList${pageMaker.makeQuery(1)}"
-                               + "&keyword=" + encodeURIComponent($("#keywordInput").val());
+                               + "&keyword=" + encodeURIComponent($("#keywordInput").val())
+                               + "&board_category="+ encodeURIComponent($("#board_category").val());
            });
        });
    

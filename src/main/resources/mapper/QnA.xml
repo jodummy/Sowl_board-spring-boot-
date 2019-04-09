@@ -2,25 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sowl_notice.dao.QnADao">
-	<select id="qnaList" resultType="com.sowl_notice.model.QnAModel">
-		SELECT 
-							QNA_WRITER,
-	              	    	QNA_CONTENT,
-	                    	QNA_INSERTDATE
-		FROM
-							SOWL_QNA
-	</select>
-	
-	<insert id="qnaInsert" parameterType="com.sowl_notice.model.QnAModel">
-		INSERT 
-		INTO 
-							SOWL_QNA(
-							QNA_WRITER, 
-							QNA_CONTENT) 
-		VALUES
-							(
-							#{qna_writer},
-							#{qna_content})
-		
-	</insert>
+   <select id="qnaList" resultType="com.sowl_notice.model.QnAModel">
+       SELECT 
+                      QNA_NO,
+                     QNA_WRITER,
+                           QNA_CONTENT,
+                     DATE_ADD(QNA_INSERTDATE, INTERVAL 9 HOUR) AS QNA_INSERTDATE,
+                     QNA_COMMENT
+      FROM
+                     SOWL_QNA
+      ORDER BY
+                     QNA_NO DESC
+   </select>
+   
+   <insert id="qnaInsert" parameterType="com.sowl_notice.model.QnAModel">
+      INSERT 
+      INTO 
+                     SOWL_QNA(
+                     QNA_WRITER, 
+                     QNA_CONTENT) 
+      VALUES
+                     (
+                     #{qna_writer},
+                     #{qna_content})
+      
+   </insert>
+   
+   <delete id="qnaDelete" parameterType="int">
+      DELETE
+      FROM
+                     SOWL_QNA
+      WHERE
+                     QNA_NO = #{qna_no}
+   </delete>
+   
+   <update id="qnaUpdate" parameterType="com.sowl_notice.model.QnAModel">
+      UPDATE
+                     SOWL_QNA
+      SET
+                     QNA_CONTENT = #{qna_content},
+                     QNA_INSERTDATE = NOW()
+      WHERE
+                     QNA_NO=#{qna_no}
+   </update>
+   
 </mapper>

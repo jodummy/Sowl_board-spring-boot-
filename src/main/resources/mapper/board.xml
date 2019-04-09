@@ -35,6 +35,7 @@
                             (SELECT @rownum:=0) r
         WHERE               BOARD_NO > 0
         AND             	BOARD_DELFLAG = 'N'
+        AND					BOARD_CATEGORY=#{category}
         ]]>
         <include refid="search"/>
         <![CDATA[
@@ -42,117 +43,14 @@
         LIMIT #{pageStart}, #{perPageNum}
         ]]>
     </select>
-<!--     하드 코딩 난 쓰레기다 -->
-     <select id="listSearchPaging1" resultType="com.sowl_notice.model.BoardModel">
-     <![CDATA[
-        SELECT
-                            @rownum:=@rownum+1 No,
-                            BOARD_NO,
-                            BOARD_TITLE,
-                            BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
-                            BOARD_WRITER,
-                            BOARD_CATEGORY
-        FROM 
-                            SOWL_BOARD,
-                            (SELECT @rownum:=0) r
-        WHERE               BOARD_NO > 0
-        AND             	BOARD_DELFLAG = 'N'
-        AND					BOARD_CATEGORY=1
-        ]]>
-        <include refid="search"/>
-        <![CDATA[
-        ORDER BY BOARD_NO DESC, BOARD_INSERTDATE DESC,No
-        LIMIT #{pageStart}, #{perPageNum}
-        ]]>
-    </select>
-    
-    <select id="listSearchPaging2" resultType="com.sowl_notice.model.BoardModel">
-     <![CDATA[
-        SELECT
-                            @rownum:=@rownum+1 No,
-                            BOARD_NO,
-                            BOARD_TITLE,
-                            BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
-                            BOARD_WRITER,
-                            BOARD_CATEGORY
-        FROM 
-                            SOWL_BOARD,
-                            (SELECT @rownum:=0) r
-        WHERE               BOARD_NO > 0
-        AND             	BOARD_DELFLAG = 'N'
-        AND					BOARD_CATEGORY=2
-        ]]>
-        <include refid="search"/>
-        <![CDATA[
-        ORDER BY BOARD_NO DESC, BOARD_INSERTDATE DESC,No
-        LIMIT #{pageStart}, #{perPageNum}
-        ]]>
-    </select>
-    
-    
-    <select id="listSearchPaging3" resultType="com.sowl_notice.model.BoardModel">
-     <![CDATA[
-        SELECT
-                            @rownum:=@rownum+1 No,
-                            BOARD_NO,
-                            BOARD_TITLE,
-                            BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
-                            BOARD_WRITER,
-                            BOARD_CATEGORY
-        FROM 
-                            SOWL_BOARD,
-                            (SELECT @rownum:=0) r
-        WHERE               BOARD_NO > 0
-        AND             	BOARD_DELFLAG = 'N'
-        AND					BOARD_CATEGORY=3
-        ]]>
-        <include refid="search"/>
-        <![CDATA[
-        ORDER BY BOARD_NO DESC, BOARD_INSERTDATE DESC,No
-        LIMIT #{pageStart}, #{perPageNum}
-        ]]>
-    </select>
-    
-    <select id="listSearchPaging4" resultType="com.sowl_notice.model.BoardModel">
-     <![CDATA[
-        SELECT
-                            @rownum:=@rownum+1 No,
-                            BOARD_NO,
-                            BOARD_TITLE,
-                            BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
-                            BOARD_WRITER,
-                            BOARD_CATEGORY
-        FROM 
-                            SOWL_BOARD,
-                            (SELECT @rownum:=0) r
-        WHERE               BOARD_NO > 0
-        AND             	BOARD_DELFLAG = 'N'
-        AND					BOARD_CATEGORY=4
-        ]]>
-        <include refid="search"/>
-        <![CDATA[
-        ORDER BY BOARD_NO DESC, BOARD_INSERTDATE DESC,No
-        LIMIT #{pageStart}, #{perPageNum}
-        ]]>
-    </select>
-    
-    
-<!--     여기까지 입니다 -->
-    
-    
-
 
     <insert id="insertBoard" parameterType="com.sowl_notice.model.BoardModel">
     INSERT 
     INTO
     SOWL_BOARD
-                        	(BOARD_WRITER , BOARD_TITLE , BOARD_CONTENT ) 
+                        	(BOARD_WRITER , BOARD_TITLE , BOARD_CONTENT ,BOARD_CATEGORY ) 
     VALUES
-                        	(#{board_writer},#{board_title},#{board_content}  )
+                        	(#{board_writer},#{board_title},#{board_content},#{board_category})
     </insert>
 
     <select id="getBoard" parameterType="int" resultType="com.sowl_notice.model.BoardModel">
@@ -161,7 +59,7 @@
                         	BOARD_NO,
                        		BOARD_CONTENT,
                         	DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_DATE,
-                        	BOARD_WRITER
+                        	BOARD_WRITER,BOARD_CATEGORY
     FROM SOWL_BOARD
     WHERE 
     						BOARD_NO=#{board_no}
@@ -194,6 +92,7 @@
                         	SOWL_BOARD
         WHERE          		BOARD_NO > 0
         AND          		BOARD_DELFLAG = 'N'
+        AND					BOARD_CATEGORY=#{category}
         ]]>
         <include refid="search"/>
     </select>
@@ -216,7 +115,7 @@
        FROM 
                             SOWL_BOARD,
        (SELECT @rownum:=0)  r
-       WHERE             BOARD_DELFLAG = 'N'
+       WHERE             	BOARD_DELFLAG = 'N'
     </select>
 
 </mapper>

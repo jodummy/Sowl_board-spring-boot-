@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jayway.jsonpath.Criteria;
 import com.sowl_notice.model.BoardModel;
 import com.sowl_notice.model.PageMaker;
 import com.sowl_notice.model.SearchCriteria;
@@ -29,77 +30,75 @@ public class BoardController {
 	BoardService boardService;
 
 	@RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
-	public String boardList(@ModelAttribute("criteria") SearchCriteria criteria, Model model, BoardModel boardModel)
+	public String boardList(SearchCriteria criteria, Model model, BoardModel boardModel, int board_category)
 			throws Exception {
-
+		criteria.setCategory(board_category);
 		PageMaker pageMaker = new PageMaker();
-		// 검색어 처리 하는곳
 		pageMaker.setCriteria(criteria);
-		// 게시물 토탈 출력
 		pageMaker.setTotalCount(boardService.selectBoardListCnt(criteria));
 		model.addAttribute("list", boardService.listSearchPaging(criteria));
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("board_category", board_category);
 
-		System.out.println("검색 어 출력 : " + criteria.toString());
-		System.out.println("게시물 총 개수  : " + pageMaker.getTotalCount());
 		return "/board/boardList";
 	}
 
 	@RequestMapping(value = "/board/boardInsert", method = RequestMethod.GET) // URL 주소
-	public String boardInsert(Model model, Principal principal) {
+	public String boardInsert(Model model, Principal principal, @RequestParam("board_category") String board_category) {
 		model.addAttribute("writer", principal.getName());
+		model.addAttribute("board_category", board_category);
 		return "/board/boardInsert";// JSP 파일명
 	}
 
 	@RequestMapping(value = "/boardInsertPage")
-	public String boardInsertpage(BoardModel boardModel, @RequestParam("board_title") String board_title,
-			@RequestParam("board_writer") String board_writer, @RequestParam("board_content") String board_content) {
-		boardModel.setBoard_writer(board_writer);
-		boardModel.setBoard_title(board_title);
-		boardModel.setBoard_content(board_content);
+	public String boardInsertpage(BoardModel boardModel, @RequestParam("board_category") String board_category) {
+		System.out.println("board_category : " + board_category);
+		boardModel.setBoard_category(Integer.parseInt(board_category));
 		boardService.insertBoard(boardModel);
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?board_category=" + board_category;
 	}
 
 	@RequestMapping(value = "/board/boardDetail", method = { RequestMethod.GET, RequestMethod.POST })
-	public String boardDetail(Model model, BoardModel boardModel, HttpServletRequest req) {
-		// boardModel.setBoard_no(board_no);
-		String no = req.getParameter("board_no");
-		BoardModel dto = boardService.getBoard(Integer.parseInt(no));
-		model.addAttribute("dto", dto);
-		return "/board/boardDetail";// JSP 파일명
+	public String boardDetail(Model model, BoardModel boardModel, int board_category) {
+		model.addAttribute("dto", boardService.getBoard(boardModel.getBoard_no()));
+		model.addAttribute("board_category", board_category);
+		return "/board/boardDetail";
 	}
 
-	@RequestMapping(value = "/board/boardDelete", method = { RequestMethod.GET, RequestMethod.POST })
-	public String boardDelete(BoardModel boardModel, @RequestParam("board_no") String board_no) {
+	@RequestMapping(value = "/boardDelete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String boardDelete(BoardModel boardModel, @RequestParam("board_no") String board_no, int board_category) {
 		int no = Integer.parseInt(board_no);
+
 		if (no > 0 & board_no != null) {
 			boardService.delBoard(no);
-			return "redirect:/board/boardList";
+			return "redirect:/board/boardList?board_category=" + board_category;
 		} else
-			return "redirect:/board/boardDetail?board_no=" + board_no;
+			return "redirect:/board/boardDetail?board_no=" + board_no + "?";
 
 	}
 
 	@RequestMapping(value = "/board/boardUpdate", method = RequestMethod.GET)
-	public String boardUpdate(Model model, BoardModel boardModel, @RequestParam("board_no") int board_no) {
-		boardModel = boardService.getBoard(board_no);
-		model.addAttribute("dto", boardModel);
+	public String boardUpdate(Model model, BoardModel boardModel, @RequestParam("board_no") int board_no,
+			int board_category) {
+		boardModel.setBoard_category(board_category);
+		model.addAttribute("dto", boardService.getBoard(board_no));
+		model.addAttribute("board_category", board_category);
 		return "/board/boardUpdate";
 	}
 
 	@RequestMapping("/boardUpdatePage")
-	public String boardUpdatePage(BoardModel boardModel) {
+	public String boardUpdatePage(BoardModel boardModel, int board_category) {
 		try {
 			boardModel.setBoard_no(boardModel.getBoard_no());
 			boardModel.setBoard_writer(boardModel.getBoard_writer());
 			boardModel.setBoard_title(boardModel.getBoard_title());
 			boardModel.setBoard_content(boardModel.getBoard_content());
 			boardService.updateBoard(boardModel);
-			return "redirect:/board/boardDetail?board_no=" + boardModel.getBoard_no();
+			return "redirect:/board/boardDetail?board_no=" + boardModel.getBoard_no() + "&board_category="
+					+ board_category;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return "/board/boardUpdate?board_no=" + boardModel.getBoard_no();
+		return "/board/boardUpdate?board_no=" + boardModel.getBoard_no() + "&board_category=" + board_category;
 	}
 }

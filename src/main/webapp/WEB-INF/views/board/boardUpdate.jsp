@@ -2,17 +2,20 @@
    pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/includeURL.jsp"%>
 
-<title>detail board</title>
+<title>update board</title>
+
 
 <script>
-function cancelBoard(board_no){
-	   location.href = "/board/boardDetail?board_no="+board_no;
+function cancelBoard(board_no , board_category){
+	   location.href = "/board/boardDetail?board_no="+board_no+"&board_category="+board_category;
 }
+function boardList(board_category){
+    location.href = "/board/boardList?board_category="+board_category;
+ }
 </script>
 
 
 <body>
-
    <div class="container" style="padding-top: 60px;">
       <form id='updateBoard' action="/boardUpdatePage" name= "updateForm" method="get">
          <input type="hidden" value="${dto.board_no}" name="board_no" id="board_no" />
@@ -38,26 +41,17 @@ function cancelBoard(board_no){
                <tr>
                   <td colspan="4">
                   <input class="btn btn-outline-secondary" type="submit" id="updateBtn" value="등록" > 
-                  <input class="btn btn-outline-secondary" type="button" id="cancelBtn" value="취소" onclick="cancelBoard(${dto.board_no})">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList()">
+                  <input type="hidden" id="board_category" name="board_category" value="${board_category}">
+                  <input class="btn btn-outline-secondary" type="button" id="cancelBtn" value="취소" onclick="cancelBoard(${dto.board_no} , ${board_category})">
+                  <input class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList(${board_category})">
                   </td>
                </tr>
             </thead>
          </table>
       </form>
    </div>
-
    <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    <script src="resource/bootstrap/js/bootstrap.min.js"></script>
-   <script >
-   function boardList(){
-	   location.href = "/board/boardList";
-   }
-   </script>
-
 </body>
 </html>

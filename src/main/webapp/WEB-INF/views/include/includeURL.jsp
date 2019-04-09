@@ -4,7 +4,7 @@
 <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="/resources/bootstrap/styles/bootstrap.css">
+
 <link rel="stylesheet" href="/resources/bootstrap/styles/cart_responsive.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/cart.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/categories_responsive.css">
@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="/resources/bootstrap/styles/footer.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/board.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/navigation.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/QnA.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/boardOne.css">
 
 
 
@@ -66,6 +68,7 @@
 <script type="text/javascript" src="/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="/resources/bootstrap/js/wow.js"></script>
 <script type="text/javascript" src="/resources/bootstrap/js/smooth-scroll.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/plugins/scrollmagic/ScrollMagic.min.js"></script>
 
 <!-- Load custom js for theme -->
 <script type="text/javascript" src="/resources/bootstrap/js/app.js"></script>

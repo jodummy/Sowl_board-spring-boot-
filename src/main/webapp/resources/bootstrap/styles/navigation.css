@@ -14,12 +14,25 @@
    font-weight: 600;
 }
 
-.main_nav::after{
-}
 .header_content.d-flex.flex-row.align-items-center.justify-content-start{
-	height : 30px;
+   height : 30px;
 }
 .logo img{
-	weight: 50px;
-	height: 50px;
+   weight: 50px;
+   height: 50px;
+}
+.main_nav ul li.hassubs::after{
+   color : white;
+}
+
+
+.hassubs ul {
+   background-color: #edeff2;
+   padding : 7px;
+   margin-right: 35%;
+}
+.hassubs ul li{
+   margin-top:5px;
+   margin-bottom:5px;
+   text-align: center;
 }

@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
    <header class="header">
       <div class="header_container">
          <div class="container">
@@ -5,19 +6,18 @@
                <div class="col">
                   <div class="header_content d-flex flex-row align-items-center justify-content-start">
                      <div class="logo">Sowl</div>
-                     <nav class="main_nav">
+                      <nav class="main_nav">
                         <ul>
                            <li class="hassubs">
                               <a href="/">Home</a>
                            </li>
                            <li class="hassubs">
-                              <a href="/board/boardList">Categories</a>
+                              <a >Categories</a>
                               <ul>
-                                 <li><a href="categories.html">1</a></li>
-                                 <li><a href="categories.html">2</a></li>
-                                 <li><a href="categories.html">3</a></li>
-                                 <li><a href="categories.html">4</a></li>
-                                 <li><a href="categories.html">5</a></li>
+                                 <li><a href="/board/boardList?board_category=1">총무부</a></li>
+                                 <li><a href="/board/boardList?board_category=2">사법부</a></li>
+                                 <li><a href="/board/boardList?board_category=3">인사부</a></li>
+                                 <li><a href="/board/boardList?board_category=4">정치부</a></li>
                               </ul>
                            </li>
                            <li><a href="/QnA/QnA">QnA</a></li>
@@ -26,8 +26,15 @@
                      </nav>
                      <div class="header_extra ml-auto">
                         <div class="shopping_cart">
-                           <a href="#">logIn</a>
-                        </div>   
+                     <c:if test="${pageContext.request.userPrincipal.name != null}">
+                        <form:form action="${pageContext.request.contextPath }/logout" method="POST">
+                           <b>${pageContext.request.userPrincipal.name }</b>님 안녕하세요
+                           <input type="submit" value="Logout" class = "logoutBtn"/>
+                        </form:form>
+                     </c:if>
+                     <c:if test="${pageContext.request.userPrincipal.name ==null}">
+                        <a href="<c:url value="/login"/>">login </a><br>
+                     </c:if>                        </div>   
                         <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
                      </div>
                   </div>
