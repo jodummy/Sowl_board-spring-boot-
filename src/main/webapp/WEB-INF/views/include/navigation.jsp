@@ -29,12 +29,13 @@
                      <c:if test="${pageContext.request.userPrincipal.name != null}">
                         <form:form action="${pageContext.request.contextPath }/logout" method="POST">
                            <b>${pageContext.request.userPrincipal.name }</b>님 안녕하세요
-                           <input type="submit" value="Logout" class = "logoutBtn"/>
+                           <input class = "logoutBtn" type="submit" value="Logout" class = "logoutBtn"/>
                         </form:form>
                      </c:if>
                      <c:if test="${pageContext.request.userPrincipal.name ==null}">
-                        <a href="<c:url value="/login"/>">login </a><br>
-                     </c:if>                        </div>   
+                        <a class = "loginBtn" href="<c:url value="/login"/>">Login </a><br>
+                     </c:if>
+                  </div>      
                         <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
                      </div>
                   </div>

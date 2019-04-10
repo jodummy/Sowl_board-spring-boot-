@@ -31,9 +31,9 @@
                <tr>
                   <td colspan="4">
                   <input type="hidden" name="board_category" id="board_category" value="${board_category }"/>
-                     <input class="btn btn-outline-secondary" type="reset" value="재작성">
-                     <input class="btn btn-outline-secondary" type="submit" id="insertButton" value="등록" onclick="check()" />
-                     <input class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList(${board_category })">
+                    <input class="btn btn-outline-secondary" type="reset" value="재작성">
+                     <input class="btn btn-outline-secondary" type="submit" id="insertButton" value="등록"/>
+                     <input id="board_list_button" class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList()">
                    </td>
                </tr>
             </thead>

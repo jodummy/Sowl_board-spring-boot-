@@ -45,9 +45,12 @@ function boardList(board_category){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<input class="btn btn-outline-secondary" type="button" id="updateBtn" value="수정" onclick="updateBoard(${dto.board_no} ,${board_category})">
-						<input class="btn btn-outline-secondary" type="button" id="deleteBtn" value="삭제" onclick="deleteBoard(${dto.board_no} ,${board_category})">
-							<input class="btn btn-outline-secondary" value="목록" onclick="boardList(${board_category})"></td>
+					
+						<input class="btn btn-outline-secondary" type="button" id="updateBtn" value="수정" onclick="updateBoard(${dto.board_no} ,${board_category})"> 
+                  		<input class="btn btn-outline-secondary" type="button" id="deleteBtn" value="삭제" onclick="deleteBoard(${dto.board_no} ,${board_category})">
+                		<input id="board_list_button" class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList(${board_category})">
+						</td>
+					
 					</tr>
 				</thead>
 			</table>

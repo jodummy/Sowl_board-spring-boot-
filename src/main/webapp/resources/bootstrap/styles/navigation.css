@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 .main_nav{
    float: left;
 }
@@ -35,4 +37,17 @@
    margin-top:5px;
    margin-bottom:5px;
    text-align: center;
+}
+.logoutBtn{
+   background-color: white;
+   border: none;
+   color: #767676;
+   font-family: 'Lato', sans-serif;
+   font-weight: 600;
+   text-decoration: none;
+   text-shadow: rgba(0,0,0,.01) 0 0 1px;
+   font-size: 16px;
+}
+.loginBtn{
+   font-family: 'Lato', sans-serif;
 }

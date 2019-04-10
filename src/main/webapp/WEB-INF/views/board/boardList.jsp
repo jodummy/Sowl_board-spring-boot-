@@ -10,24 +10,26 @@
 <body>
    <div class= "container" id = "board">
    <table>
-      <tr>
+      <tr  class = "board_title">
          <th>NO</th>
-         <th>제목</th>
+         <th class="board_title">제목</th>
          <th>작성자</th>
          <th>작성일</th>
       </tr>
       
        <c:forEach var="list" varStatus="i" items="${list}">
-       <tr onclick="test(${list.board_no} , ${board_category} )">
+       <tr onclick="test(${list.board_no} ,${board_category })">
              <th scope="row">${list.no }</th>
-            <td>${list.board_title }</td>
-            <td>${list.board_writer }</td>
-            <td>${list.board_insertdate }</td>
+            <td class="td_title">${list.board_title }</a></td>
+            <td class="td_sub">${list.board_writer }</td>
+            <td class="td_sub">${list.board_insertdate }</td>
+            <input type="hidden" value="${list.board_no}" name="board_no" />
       </tr>
       </c:forEach>
       
    </table>
    <br />
+   <div id="searching">
    <ul class="searching">
       <li class="li_button"><button type="button" onclick="boardInsert('${board_category}')"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li>
       <li> <%--검색 처리 영역--%>

@@ -1,3 +1,12 @@
 #board_list_button{
-	float: right;
+   float: right;
+}
+#detailBoard{
+   margin-bottom: 200px;
+}
+#insertBoardForm{
+   margin-bottom: 200px;
+}
+#updateBoard{
+   margin-bottom: 200px;
 }

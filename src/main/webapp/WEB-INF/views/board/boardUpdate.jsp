@@ -39,11 +39,11 @@ function boardList(board_category){
                  </td>
                </tr>
                <tr>
-                  <td colspan="4">
-                  <input class="btn btn-outline-secondary" type="submit" id="updateBtn" value="등록" > 
+                  <td colspan="4">                  
                   <input type="hidden" id="board_category" name="board_category" value="${board_category}">
+                  <input class="btn btn-outline-secondary" type="submit" id="updateBtn" value="등록" > 
                   <input class="btn btn-outline-secondary" type="button" id="cancelBtn" value="취소" onclick="cancelBoard(${dto.board_no} , ${board_category})">
-                  <input class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList(${board_category})">
+                  <input id="board_list_button" class="btn btn-outline-secondary" type="reset" value="목록" onclick="boardList(${board_category})">
                   </td>
                </tr>
             </thead>

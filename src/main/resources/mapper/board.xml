@@ -9,7 +9,7 @@
                             BOARD_NO,
                             BOARD_TITLE,
                             BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            DATE_FORMAT(DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR), '%Y-%m-%d') AS BOARD_INSERTDATE,
                             BOARD_WRITER
         FROM 
                             SOWL_BOARD,
@@ -28,7 +28,7 @@
                             BOARD_NO,
                             BOARD_TITLE,
                             BOARD_CONTENT,
-                            DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_INSERTDATE,
+                            DATE_FORMAT(DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR), '%Y-%m-%d') AS BOARD_INSERTDATE,
                             BOARD_WRITER,
                             BOARD_CATEGORY
         FROM 
@@ -59,7 +59,7 @@
                         	BOARD_TITLE,
                         	BOARD_NO,
                        		BOARD_CONTENT,
-                        	DATE_FORMAT(BOARD_INSERTDATE, '%Y-%m-%d') AS BOARD_DATE,
+                        	DATE_FORMAT(DATE_ADD(BOARD_INSERTDATE, INTERVAL 9 HOUR), '%Y-%m-%d') AS BOARD_INSERTDATE,
                         	BOARD_WRITER,BOARD_CATEGORY
     FROM SOWL_BOARD
     WHERE 
