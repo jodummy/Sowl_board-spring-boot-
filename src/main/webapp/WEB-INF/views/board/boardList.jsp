@@ -18,7 +18,7 @@
       </tr>
       
        <c:forEach var="list" varStatus="i" items="${list}">
-       <tr onclick="test(${list.board_no} ,${board_category })">
+       <tr class="tr_hover" onclick="test(${list.board_no} ,${board_category })">
              <th scope="row">${list.no }</th>
             <td class="td_title">${list.board_title }</a></td>
             <td class="td_sub">${list.board_writer }</td>
@@ -29,27 +29,7 @@
       
    </table>
    <br />
-   <div id="searching">
-   <ul class="searching">
-      <li class="li_button"><button type="button" onclick="boardInsert('${board_category}')"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li>
-      <li> <%--검색 처리 영역--%>
-  
-       <div class="form-group col-sm-9"> 
-           <div class="input-group">
-               <input type="text" class="form-control" name="keyword" id="keywordInput" value="${criteria.keyword}" placeholder="검색어">
-               <input type="hidden" name="category" id ="board_category" value= "${board_category}">
-               <span class="input-group-btn">
-                   <button type="button" class="btn btn-primary btn-flat" id="searchBtn">
-                       <i class="fa fa-search"></i> 검색
-                   </button>
-               </span>
-              </div>
-    </div></li>
-   </ul>
-   <br/>
-   <br/>
-   <br/>
-<%--페이징 처리 영역--%>
+   <%--페이징 처리 영역--%>
 <div class="text-center">
     <ul class="pagination">
         <c:if test="${pageMaker.prev}">
@@ -70,6 +50,26 @@
     </ul>
 </div>
 
+   
+   <div id="searching">
+   <ul class="searching">
+      <li> <%--검색 처리 영역--%>
+       <div class="form-group col-sm-9"> 
+           <div class="input-group">
+               <input type="text" class="form-control" name="keyword" id="keywordInput" value="${criteria.keyword}" placeholder="                                    검색어">
+               <input type="hidden" name="category" id ="board_category" value= "${board_category}">
+               <span class="input-group-btn">
+                   <button type="button" class="btn btn-primary btn-flat" id="searchBtn">
+                       <i class="fa fa-search"></i> 검색
+                   </button>
+                    <button type="button" onclick="boardInsert('${board_category}')" class="btn btn-primary btn-flat" id="searchBtn" class ="write_btn">글쓰기</button>
+               </span>
+              </div>
+    </div></li>
+   </ul>
+   <br/>
+   <br/>
+   <br/>
 
 
 </div>

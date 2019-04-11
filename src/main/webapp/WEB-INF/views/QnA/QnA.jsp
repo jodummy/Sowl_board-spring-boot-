@@ -27,7 +27,7 @@
    
    <table class="qna_box">
       <tr>      
-         <th>내 용</th>   
+         <th>내 용</th>
       </tr>
 
       <c:forEach var="list" varStatus="i" items="${list}">
@@ -40,10 +40,10 @@
                <div id="qnadata">${list.qna_insertdate }</div>
                <c:if test="${pageContext.request.userPrincipal.name == list.qna_writer}">
                <div id="qna_u" class="qna_ud">
-                  <a onclick = "QnAUpdate('${list.qna_no }','${list.qna_content }')">수정</a>
+                  <input type="button" value="수정" onclick = "QnAUpdate('${list.qna_no }','${list.qna_content }')"></input>
                </div>
                <div id="qna_d" class="qna_ud">
-                  <a onclick="QnADelete(${list.qna_no })">삭제</a>
+                  <input type="submit" value="삭제" onclick="QnADelete(${list.qna_no })"></input>
                </div>
                </c:if>
             </div>
@@ -53,13 +53,16 @@
 <%--                </c:if> --%>
 
                <c:if test="${pageContext.request.userPrincipal.name == '관리자' && list.qna_comment == null }">
-                  <a class= "QnACommentInsert"onclick = "QnACommentInsert('${list.qna_no }')">답글달기</a>
+                  <input type="submit" value="답글달기"class= "QnACommentInsert"onclick = "QnACommentInsert('${list.qna_no }')"></input>
                </c:if>
-               <div id="comment${list.qna_no }" >
-                  ${list.qna_comment }
+               <div class="qna_comment" id="comment${list.qna_no }" >
+                  <c:if test="${list.qna_comment != null }">
+                  ▶                  ${list.qna_comment }
+                  
+                  </c:if>
                   <c:if test="${pageContext.request.userPrincipal.name == '관리자' && list.qna_comment != null}">
-                     <a onclick="commentUpdate('${list.qna_no}','${list.qna_comment }')">수정</a>
-                     <a onclick="commentDelete(${list.qna_no})">삭제</a>
+                     <input class ="comment_update" type="submit" value="수정" onclick="commentUpdate('${list.qna_no}','${list.qna_comment }')"></input>
+                     <input class ="comment_update" type="submit" value="삭제" onclick="commentDelete(${list.qna_no})"></input>
                   </c:if>
                </div>
             </td>

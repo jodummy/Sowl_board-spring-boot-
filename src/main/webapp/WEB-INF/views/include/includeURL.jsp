@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="/resources/bootstrap/styles/navigation.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/QnA.css">
 <link rel="stylesheet" href="/resources/bootstrap/styles/boardOne.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/footer.css">
+<link rel="stylesheet" href="/resources/bootstrap/styles/main.css">
 
 
 
@@ -55,7 +57,7 @@
 
 </body>
 
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/include/footer.jsp"%> --%>
 <%@ include file="/WEB-INF/views/include/navigation.jsp"%>
 
 <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.11.2.min.js"></script>

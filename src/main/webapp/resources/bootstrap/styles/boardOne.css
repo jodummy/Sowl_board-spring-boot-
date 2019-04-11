@@ -10,3 +10,9 @@
 #updateBoard{
    margin-bottom: 200px;
 }
+.board_wt{
+	 white-space: nowrap;
+}
+.tr_hover:hover{
+	background-color: #e1e1e1;
+}

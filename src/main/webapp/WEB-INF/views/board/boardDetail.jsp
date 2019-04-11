@@ -28,7 +28,7 @@ function boardList(board_category){
 			<table class="table table-striped table-hover">
 				<thead class="thead-dark">
 					<tr>
-						<td>작성자</td>
+						<td class="board_wt">작성자</td>
 						<td><input type="text" value="${dto.board_writer}"
 							name="board_writer" readonly="readonly" style="width: 1100px;" /></td>
 					</tr>

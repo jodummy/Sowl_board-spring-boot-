@@ -21,7 +21,7 @@ function boardList(board_category){
          <input type="hidden" value="${dto.board_no}" name="board_no" id="board_no" />
          <table class="table table-striped table-hover">
             <thead class="thead-dark">
-               <tr>
+               <tr class="board_wt">
                   <td>작성자</td>
                   <td>
                      <input type="text" value="${dto.board_writer}" readonly="readonly" name="board_writer" style="width: 1100px;"/> 

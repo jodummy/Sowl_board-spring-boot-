@@ -11,7 +11,7 @@
                            <li class="hassubs">
                               <a href="/">Home</a>
                            </li>
-                           <li class="hassubs">
+                           <li class="hassubs" id = "nav_category">
                               <a >Categories</a>
                               <ul>
                                  <li><a href="/board/boardList?board_category=1">총무부</a></li>

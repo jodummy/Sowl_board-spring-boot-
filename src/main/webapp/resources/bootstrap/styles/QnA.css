@@ -58,7 +58,7 @@ margin-right:20px;
 
 .qna_content{
    text-align: left;
-   font-size: 20px;
+   font-size: 20px;  
 }
 #writer{
    display: -webkit-box;
@@ -73,16 +73,25 @@ margin-right:20px;
 }
 .QnACommentInsert{
    margin-top: 30px;
+   float: right;
 }
 .qna_ud{
    display:inline-block;
 }
-#qna_u a{
+#qna_u{
    margin-left : 20px;
-   border:1px solid black;
    text-align: center;
 }
-#qna_d a{
-   border:1px solid black;
+#qna_d{
    text-align: center;
+}
+#editor{
+	margin-top:20px;
+	}
+.qna_comment{
+	text-align: left;
+}
+.comment_update{
+	float: right;
+	margin-left: 5px;
 }

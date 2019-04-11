@@ -51,3 +51,6 @@
 .loginBtn{
    font-family: 'Lato', sans-serif;
 }
+#nav_category{
+	  cursor:pointer;
+}
